@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Profile card component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+    :root {
+      --normal: 400;
+      --bold: 700;
+
+      --dark-cyan: hsl(185, 75%, 39%);
+      --very-dark-desaturated-blue: hsl(229, 23%, 23%);
+      --dark-grayish-blue: hsl(227, 10%, 46%);
+      --dark-gray: hsl(0, 0%, 59%);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--dark-cyan);
+      height: 100vh;
+      width: 100%;
+      font-family: "Kumbh Sans", sans-serif;
+    }
+
+    .bold {
+      color: var(--very-dark-desaturated-blue);
+      font-weight: var(--bold);
+      font-size: 18px;
+    }
+
+    .light {
+      color: hsl(227, 10%, 46%, 0.9);
+      font-weight: var(--normal);
+    }
+
+    .bg-top-container,
+    .bg-bottom-container {
+      position: fixed;
+      width: 0;
+      height: 0;
+      z-index: -1;
+    }
+
+    .bg-top-container {
+      top: 0;
+      left: 0;
+    }
+
+    .bg-top {
+      position: absolute;
+      transform: translate(-28%, -51%);
+    }
+
+    .bg-bottom {
+      position: absolute;
+      transform: translate(71%, 38%);
+    }
+
+    .wrapper,
+    .container,
+    .card-body,
+    .status,
+    .foot-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container,
+    .card-body,
+    .status {
+      flex-direction: column;
+    }
+
+    .wrapper {
+      height: 100vh;
+    }
+
+    .card {
+      background-color: #fff;
+      width: 350px;
+      height: 374px;
+      border-radius: 20px;
+      box-shadow: 3px 3px 19px -10px rgba(0,0,0,0.75);
+    }
+
+    .card-header {
+      width: 100%;
+      height: 140px;
+      background-image: url(./images/bg-pattern-card.svg);
+      background-size: cover;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .container {
+      height: 234px;
+    }
+
+    .card-body {
+      width: 100%;
+      height: 145px;
+    }
+
+    .photo {
+      margin-top: -83px;
+      border: 4px solid #fff;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+
+    .name {
+      margin-top: 24px;
+    }
+
+    .age {
+      margin-left: 5px;
+    }
+
+    .city {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 87px;
+      padding: 29px 45px 24px 45px;
+      border-top: 0.5px solid hsl(0, 0%, 59%, 0.5);
+    }
+
+    .status {
+      width: 71px;
+    }
+
+    .type {
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      margin-top: 5px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 3.5vh;
+      color: #fff;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: var(--very-dark-desaturated-blue);
+    }
+
+    @media (max-width: 1366px) {
+      .bg-top {
+        margin-top: -40px;
+        margin-left: -40px;
+      }
+
+      .bg-bottom {
+        margin-left: -60px;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      .bg-top,
+      .bg-bottom {
+        margin-left: -50px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .bg-top,
+      .bg-bottom {
+        margin-left: -150px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .bg-top,
+      .bg-bottom {
+        margin-left: -275px;
+      }
+
+      .card {
+        width: 325px;
+      }
+
+      footer {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .bg-top,
+      .bg-bottom {
+        transform: unset;
+        transform: scale(0.5, 0.5);
+      }
+
+      .bg-top {
+        margin-left: -520px;
+        margin-top: -500px;
+      }
+
+      .bg-bottom {
+        margin-left: -85px;
+        margin-top: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-top-container">
+    <img src="./images/bg-pattern-top.svg" class="bg-top">
+  </div>
+  <div class="bg-bottom-container">
+    <img src="./images/bg-pattern-bottom.svg" class="bg-bottom">
+  </div>
+  <div class="wrapper">
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="container">
+        <div class="card-body">
+          <img src="./images/image-victor.jpg" alt="Victor Crest" class="photo">
+          <h3 class="name bold">Victor Crest <span class="age light">26</span></h3>
+          <p class="city light">London</p>
+        </div>
+        <div class="card-footer">
+          <div class="status">
+            <h3 class="value bold">80K</h3>
+            <p class="type light">Followers</p>
+          </div>
+          <div class="status">
+            <h3 class="value bold">803K</h3>
+            <p class="type light">Likes</p>
+          </div>
+          <div class="status">
+            <h3 class="value bold">1.4K</h3>
+            <p class="type light">Photos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="foot-wrapper">
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://twitter.com/upilMarkupil" target="_blank">Lutfi Hakim</a>.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
